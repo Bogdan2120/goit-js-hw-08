@@ -16,6 +16,9 @@ const fromData = {};
 
 function onFormSubmit(e) {
   e.preventDefault();
+
+  const saveText = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE));
+  console.log(saveText);
   e.currentTarget.reset();
   localStorage.removeItem(FEEDBACK_FORM_STATE);
 }
@@ -30,7 +33,6 @@ function onTextareaInput(e) {
 function populateTextarera() {
   const saveText = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE));
   if (saveText) {
-    console.log(saveText);
     refs.message.value = saveText.message || '';
     refs.email.value = saveText.email || '';
   }
