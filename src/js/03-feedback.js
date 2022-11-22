@@ -12,7 +12,7 @@ refs.form.addEventListener('input', throttle(onTextareaInput, 500));
 
 populateTextarera();
 
-const fromData = {};
+const fromData = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE)) || {};
 
 function onFormSubmit(e) {
   e.preventDefault();
@@ -32,8 +32,9 @@ function onTextareaInput(e) {
 
 function populateTextarera() {
   const saveText = JSON.parse(localStorage.getItem(FEEDBACK_FORM_STATE));
+
   if (saveText) {
-    refs.message.value = saveText.message || '';
-    refs.email.value = saveText.email || '';
+    refs.message.value = saveText.message;
+    refs.email.value = saveText.email;
   }
 }
